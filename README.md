@@ -117,7 +117,7 @@ public:
     }
 };
 ```
-**Task #1**
+**Task #3**
 ## 49. Group Anagrams
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
@@ -153,5 +153,33 @@ public:
     }
 };
 //solved using editorial knowledge
+```
+**Task #4**
+## 118. Pascal's Triangle
+> Sample Input Output
+```
+Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+```
+> My Code
+```
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector <int>> ans;
+    
+        for(int i=0; i<numRows; i++)
+        {
+            vector <int> inner(i+1,1); //initialize with 1
+            
+            for(int j=1; j<i; j++)  //fill in the non-boundary elements of inner.
+              inner[j]= ans[i-1][j] + ans[i-1][j-1];  // j=4th value will be 3rd and 4th value of 3rd row
+
+            ans.push_back(inner);
+        }
+        
+        return ans;
+    }
+};
 ```
 
