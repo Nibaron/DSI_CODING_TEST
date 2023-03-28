@@ -67,6 +67,56 @@ public:
     }
 };
 ```
+**Task #2**
+## 242. Valid Anagram
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+typically using all the original letters exactly once.
+> Sample Input Output
+```
+Input: s = "anagram", t = "nagaram"
+Output: true
+```
+> My Code - Hash table
+```
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int a = s.size();
+        int b = t.size();
+        if (a != b) return false;
+
+        vector<int> arr(256, 0);
+
+        for (int i = 0; i < a; i++) {
+            arr[s[i]]++;
+        }
+
+        for (int j = 0; j < b; j++) {
+            arr[t[j]]--;
+            if (arr[t[j]] < 0) return false;
+        }
+
+        return true;
+    }
+};
+```
+> Using Sorting function
+```
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        sort(s.begin(),s.end());
+        sort(t.begin(),t.end());
+        
+        if(s==t)
+            return true;
+        else
+            return false;
+    }
+};
+```
 **Task #1**
 ## 
 > Sample Input Output
